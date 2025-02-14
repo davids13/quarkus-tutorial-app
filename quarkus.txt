@@ -1,0 +1,59 @@
+- Though the JAX-RS resource does not specify a CDI Scope annotation
+  Quarkus defaults JAX-RS resources to @Singleton.
+
+- quarkus-resteasy-jsonb dependency:
+    Doing this adds support for returning JSON objects in the endpoints.
+
+entity:
+    -  When entity doesn’t have any equals or hashcode methods, making any equality check use the default object comparison,
+       which in this case means they are not the same object.
+
+- @ConfigProperty:
+    When injecting a property with @ConfigProperty, the MicroProfile Config specification requires the use of the @Inject annotation.
+    Quarkus, with its focus on developer joy, makes the use of @Inject on @ConfigProperty annotations optional to simplify code.
+    Quarkus does not require the @Inject annotation as a developer convenience, but it can be used when application portability to other MicroProfile runtimes is desired.
+
+jpa:
+    - All constructors were removed from the Account class, because constructing instances directly is not needed when using JPA.
+    - When using JPA, the fields can be marked private instead of public
+
+persist (for persisting a new entity instance):
+    - Calling entityManager.persist() throws an exception if it’s already persisted
+
+panache:
+    - properties needs to be public
+    - getter and setter:
+        Getter and setter methods for the fields are not required. During build time,
+        Panache generates the necessary getter and setter methods, replacing field
+        access in code to use the generated getter and setter methods.
+    - @Id:
+        Definition of id, the primary key, is handled by PanacheEntity. If there was a need
+        to customize the id configuration, we could do it with the usual JPA annotations.
+
+@Transactional:
+    - Tells Quarkus that a transaction should be created for this operation A transaction is necessary
+    here because any exception from within the method needs to result in a “rollback” of any proposed database changes before they’re committed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

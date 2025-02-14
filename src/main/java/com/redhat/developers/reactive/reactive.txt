@@ -1,0 +1,27 @@
+@Incoming:
+    -(receive) used to notify subscriber of incoming receive messages
+
+@Outgoing:
+    - (send) send messages to...
+
+@Broadcast:
+    - by default the message is sent to a single consumer.
+    - using @BroadcastBy you can tell the system to send messages to all the consumers in the channel.
+    - @Broadcast must be used with the @Outgoing annotation
+
+@Channel:
+    - indicate to which channel you are going to send your payload or messages
+
+    @Emitter:
+        - The Emitter is the object to use to send these payloads or messages.
+        - Feeds a channel from imperative code
+
+    @Incoming:
+        - it's needed to receive the message
+
+
+    - You must have a @Incoming("prices") somewhere in your application (meaning a method consuming messages transiting on the channel prices),
+     or an outbound connector configured to manage the prices channel (mp.messaging.outgoing.prices...)
+
+Reactive Message:
+     - Contains a payload, a set of metadata, and an acknowledgement function

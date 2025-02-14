@@ -1,0 +1,7 @@
+https://www.callicoder.com/java-8-completablefuture-tutorial/
+
+what async means?
+    - Asynchronous programming is a means of writing non-blocking code by
+      running a task on a separate thread than the main application thread
+      and notifying the main thread about its progress, completion or failure.
+      This way, your main thread does not block/wait for the completion of the task, and it can execute other tasks in parallel.
